@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Resume of Charles He - Software Architect" />
+    <title>Charles He - Resume</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              slate: {
+                50: '#f8fafc',
+                100: '#f1f5f9',
+                200: '#e2e8f0',
+                300: '#cbd5e1',
+                400: '#94a3b8',
+                500: '#64748b',
+                600: '#475569',
+                700: '#334155',
+                800: '#1e293b',
+                900: '#0f172a',
+              },
+              primary: {
+                50: '#eff6ff',
+                100: '#dbeafe',
+                200: '#bfdbfe',
+                300: '#93c5fd',
+                400: '#60a5fa',
+                500: '#3b82f6',
+                600: '#2563eb',
+                700: '#1d4ed8',
+                800: '#1e40af',
+                900: '#1e3a8a',
+              }
+            },
+            fontFamily: {
+              sans: ['Inter', 'sans-serif'],
+              serif: ['Merriweather', 'serif'],
+            }
+          }
+        }
+      }
+    </script>
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Merriweather:wght@300;400;700;900&display=swap" rel="stylesheet">
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <style>
+      body {
+        font-family: 'Inter', sans-serif;
+        background-color: #f1f5f9;
+        background-image: radial-gradient(#cbd5e1 1px, transparent 1px);
+        background-size: 20px 20px;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+      
+      /* Smooth Scrolling & Base Transitions */
+      * {
+          transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
+          transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+          transition-duration: 150ms;
+      }
+      
+      @media print {
+        @page {
+            margin: 0;
+            size: auto;
+        }
+
+        body {
+          background: white !important;
+          margin: 0 !important;
+          padding: 0 !important;
+          /* Ensure text is black by default unless overridden */
+          color: black;
+        }
+
+        #app {
+            width: 100% !important;
+            margin: 0 !important;
+            padding: 0 !important;
+        }
+
+        .no-print {
+            display: none !important;
+        }
+
+        /* 
+           CRITICAL PRINT LAYOUT FIX:
+           1. Force CSS Grid to strictly define the 2 columns (Sidebar 30%, Main 70%).
+           2. Use a linear-gradient on the container to simulate the sidebar background 
+              color extending all the way down, even if the content is short.
+        */
+        #resume-container {
+            display: grid !important;
+            grid-template-columns: 30% 70% !important;
+            width: 100% !important;
+            max-width: none !important;
+            box-shadow: none !important;
+            border: none !important;
+            border-radius: 0 !important;
+            margin: 0 !important;
+            /* Matches slate-900 (sidebar) and white (main) */
+            background: linear-gradient(to right, #0f172a 30%, #ffffff 30%) !important; 
+            overflow: visible !important;
+            height: auto !important;
+        }
+
+        /* Sidebar Styling for Print */
+        aside {
+            width: 100% !important;
+            background: transparent !important; /* Let gradient show */
+            padding: 2.5rem !important; /* Increase padding for print readability */
+            height: auto !important;
+            color: #cbd5e1 !important; /* Slate 300 */
+        }
+        
+        /* Force light text in the dark sidebar column */
+        aside h1, aside h2, aside h3, aside .text-white {
+            color: #ffffff !important;
+            text-shadow: none !important;
+        }
+        aside .text-slate-300, aside .text-slate-400, aside .text-slate-500 {
+            color: #cbd5e1 !important;
+        }
+        aside .text-primary-400, aside .text-primary-500 {
+            color: #60a5fa !important; /* Primary 400 */
+        }
+        aside .border-slate-700 {
+            border-color: #334155 !important;
+        }
+
+        /* Main Content Styling for Print */
+        .main-content {
+            width: 100% !important;
+            background: transparent !important;
+            padding: 2.5rem !important;
+            padding-top: 3rem !important;
+            overflow: visible !important;
+            height: auto !important;
+        }
+        
+        /* Typography adjustments for Print */
+        p, li {
+            font-size: 10pt !important;
+            line-height: 1.5 !important;
+        }
+        h2 {
+            font-size: 16pt !important;
+            margin-bottom: 1rem !important;
+        }
+
+        /* Break Management */
+        h2, h3 {
+            break-after: avoid;
+            page-break-after: avoid;
+        }
+        section {
+            break-inside: avoid; 
+            margin-bottom: 2rem !important;
+        }
+        /* Allow lists to break, but keep items intact if possible */
+        .timeline-item, .project-card, li {
+            break-inside: avoid;
+            page-break-inside: avoid;
+        }
+      }
+    </style>
+</head>
+<body>
+    <div id="app"></div>
+
+    <script>
+        // --- DATA ---
+        const RESUME_DATA = {
+          name: "Charles He",
+          title: "Software Architect | Senior Java Engineer | Technical Manager",
+          summary: "Highly experienced and passionate backend engineer and system architect, with a strong focus on foundational component development and distributed architecture. Over the years, I have led or contributed to the implementation of core infrastructure at scale, including logging platforms, low-code frameworks, intelligent assistants, and CRM/contract systems. I have also played a key role in building and managing technical teams, defining engineering workflows, performance review systems, and cultivating a culture of learning and excellence within the organization.",
+          contact: {
+            phone: "(626) ***-****",
+            email: "meixixizf24@gmail.com",
+            github: "github.com/importsource",
+            githubUrl: "https://github.com/importsource",
+            blog: "ImportSource"
+          },
+          skills: [
+            {
+              title: "Backend & Core",
+              skills: ["Java", "Spring Boot", "Spring Cloud", "Netty", "RPC", "DDD", "JVM Tuning (ZGC)", "Concurrent Programming"],
+              icon: "code"
+            },
+            {
+              title: "Microservices & Infra",
+              skills: ["Microservices", "Docker", "DevOps", "Zookeeper", "Maven", "Git"],
+              icon: "cloud"
+            },
+            {
+              title: "Big Data & Distributed",
+              skills: ["HDFS", "MapReduce", "Flink", "ClickHouse", "MongoDB", "ElasticSearch"],
+              icon: "server"
+            },
+            {
+              title: "Databases",
+              skills: ["Redis", "HBase", "MySQL", "Relational DB Optimization"],
+              icon: "database"
+            },
+            {
+              title: "Frontend",
+              skills: ["HTML5", "jQuery", "Bootstrap", "AngularJS"],
+              icon: "layout"
+            }
+          ],
+          management: [
+            {
+              period: "2019 – 2022",
+              role: "Head of Technical Productivity Department, Chengdu Division",
+              description: [
+                "Managed a team of 20 engineers (direct reports).",
+                "Led the establishment of Chengdu’s technical culture and engineering systems.",
+                "Co-designed and implemented company-wide practices: QA, Project Management, and OKRs."
+              ]
+            },
+            {
+              period: "2017 – 2019",
+              role: "Virtual Team Lead (5 engineers)",
+              description: [
+                "While working as a Senior Java Engineer, led a team to develop Ximalaya's CRM, Contract, and Copyright Systems."
+              ]
+            }
+          ],
+          experience: [
+            {
+              company: "Tencent Ximalaya FM",
+              location: "Shanghai/Chengdu",
+              period: "Sep 2017 – Present",
+              roles: ["Senior Java Engineer", "Lead Java Engineer", "Principal Technical Expert"],
+              highlights: [
+                "Led the design and development of core systems for Ximalaya's Content Management Platform, including Partner, Contract, and Copyright modules.",
+                "Played a key role in building foundational platforms such as the distributed caching layer, configuration center, message middleware, and alerting center.",
+                "Spearheaded the migration of the company’s service architecture from Dubbo to a Spring Cloud-based microservices architecture.",
+                "Designed and implemented common infrastructure components (e.g., 'blob' for distributed file storage, 'doer' for task scheduling, 'xscript' for backend workflows)."
+              ]
+            },
+            {
+              company: "ZBJ.com (Zhubajie)",
+              location: "Chongqing",
+              period: "Jul 2016 – Sep 2017",
+              roles: ["Senior Java Engineer"],
+              highlights: [
+                "Contributed to infrastructure platforms including alert centers, configuration centers, and distributed cache services.",
+                "Built reusable components for company-wide use, supporting hundreds of internal services."
+              ]
+            },
+            {
+              company: "China Telecom IT R&D Center",
+              location: "Chongqing/Beijing",
+              period: "May 2015 – Jul 2016",
+              roles: ["Senior Java Engineer (On-site Exchange)"],
+              highlights: [
+                "Developed components for Alogic, China Telecom’s internal lightweight microservices framework.",
+                "Focused on blob storage, database job scheduling, and system integration tools."
+              ]
+            },
+            {
+              company: "China Telecom Chongqing System Integration Center",
+              location: "Chongqing",
+              period: "Nov 2010 – May 2015",
+              roles: ["Java Software Engineer"],
+              highlights: [
+                "Involved in the development of internal logistics, contract management, and portal systems.",
+                "Led frontend/backend development using Spring, Hibernate, JSP, and jQuery.",
+                "Participated in award-winning internal innovation projects."
+              ]
+            }
+          ],
+          projects: [
+            {
+              name: "Ximalaya AIGC – AI-Powered Book Summary Generator",
+              company: "Tencent Ximalaya FM",
+              period: "Sep 2023 – Present",
+              description: "Leverages LLM capabilities to automatically generate audiobook-style book summaries, reducing costs for contracted writers.",
+              role: ["Lead Engineer"],
+              tech: ["IntelliJ IDEA", "LLM", "GPT-4", "Prompt Engineering"],
+              impact: ["Significantly reduced high costs associated with hiring contracted writers.", "Created structured scripts suitable for audio narration using recursive prompts."]
+            },
+            {
+              name: "General Log Storage Middleware",
+              company: "Tencent Ximalaya FM",
+              period: "Sep 2017 – Present",
+              description: "Internal audit log platform for Operations, Sales, IT, and DevOps departments.",
+              role: ["Architect", "Developer"],
+              tech: ["Java", "MQ", "ElasticSearch", "HBase"],
+              impact: ["Designed and implemented from scratch.", "Consists of 4 core modules (client, transfer, storage, admin)."]
+            },
+            {
+              name: "Ximalaya Smart Assistant (DingTalk Bot)",
+              company: "Tencent Ximalaya FM",
+              period: "Sep 2017 – Present",
+              description: "Intelligent assistant chatbot improving internal communication using an expert knowledge model.",
+              role: ["Team Lead", "Architect"],
+              tech: ["NLP", "Text Segmentation", "Sentiment Analysis"],
+              impact: ["Used by over 85% of employees.", "Answered over 40,000 questions.", "Optimized internal workflows through categorized insights."]
+            },
+            {
+              name: "Hayai Low-Code Platform",
+              company: "Tencent Ximalaya FM",
+              period: "Sep 2017 – Present",
+              description: "Platform for quickly building internal applications (within an hour) for HR, Admin, Ops, and Legal teams.",
+              role: ["Core Developer", "Team Lead"],
+              tech: ["Metadata Engine", "Rendering Layer", "Workflow Engine"],
+              impact: ["45+ internal apps created and deployed.", "Improved business efficiency across multiple departments."]
+            },
+            {
+              name: "Contract Management System",
+              company: "Tencent Ximalaya FM",
+              period: "Sep 2017 – Present",
+              description: "Handles dynamic and complex contracts between Ximalaya and partners.",
+              role: ["Initiator", "Team Lead"],
+              tech: ["Configuration Domain", "Business Domain", "API Design"],
+              impact: ["Manages tens of thousands of copyright contracts.", "Foundational system for creator settlements."]
+    },
+    {
+      name: "CRM System",
+      company: "Tencent Ximalaya FM",
+      period: "Sep 2017 – Present",
+      description: "Centralizes lifecycle management for clients and signed creators.",
+      role: ["Design Lead", "Developer"],
+      tech: ["Java", "Microservices"],
+      impact: ["Defined common language across content lifecycle.", "Core platform for marketing ROI decisions."]
+    },
+            {
+              name: "Camille Alert Center",
+              company: "ZBJ.com",
+              period: "Jul 2016 – Sep 2017",
+              description: "Alert center consuming Pinpoint topics, validating rules, and dispatching notifications.",
+              role: ["Developer"],
+              tech: ["Java", "Pinpoint", "Custom Rule Engine"],
+              impact: ["Developed alarm core engine with custom strategy/channel support."]
+            },
+            {
+              name: "Distributed Cache Platform",
+              company: "ZBJ.com",
+              period: "Jul 2016 – Sep 2017",
+              description: "Unified Redis management platform supporting monitoring, migration, and slow log query.",
+              role: ["Developer"],
+              tech: ["Redis", "Java"],
+              impact: ["Adopted by ~300 business services."]
+            }
+          ],
+          education: [
+            {
+              school: "Beijing University of Posts and Telecommunications",
+              degree: "Master of Engineering in Software Engineering",
+              period: "Jul 2016 – Mar 2019",
+              type: "Part-time"
+            },
+            {
+              school: "Northwest University of Political Science and Law",
+              degree: "Bachelor of Law in Civil and Commercial Law",
+              period: "Jul 2006 – Jul 2010",
+              type: "Full-time"
+            }
+          ],
+          honors: [
+            { title: "First Prize, Shaanxi Province Advertising & Trademark Design Competition", year: "2006" },
+            { title: "Gold Award, Innovation Achievement", year: "2013", issuer: "China Telecom Chongqing" },
+            { title: "Bronze Award, Innovation Achievement", year: "2014", issuer: "China Telecom Chongqing" },
+            { title: "Outstanding Innovation Performer", year: "2014", issuer: "China Telecom Chongqing" },
+            { title: "Selected for Open Source Software Talent Development Program", year: "2015", issuer: "China Telecom Group" },
+            { title: "Translated \"NoSQL Distilled\" by Martin Fowler into Chinese", year: "2016" }
+          ],
+          languages: [
+            "Chinese (Native)",
+            "English (Proficient - Technical Reading/Translation)"
+          ]
+        };
+
+        // --- RENDER HELPERS ---
+
+        function renderIcon(name, classes = "") {
+            return `<i data-lucide="${name}" class="${classes}"></i>`;
+        }
+
+        function renderContactItem(iconName, text, href) {
+            const content = href 
+                ? `<a href="${href}" target="_blank" rel="noopener noreferrer" class="text-slate-300 hover:text-white transition-colors print:text-inherit">${text}</a>`
+                : `<span class="text-slate-300 print:text-inherit">${text}</span>`;
+            
+            return `
+            <div class="flex items-center gap-3 text-sm group">
+                <div class="p-1.5 rounded bg-slate-800 group-hover:bg-primary-900/50 transition-colors border border-slate-700/50 print:bg-transparent print:border-none print:p-0">
+                    ${renderIcon(iconName, "w-4 h-4 text-primary-400 print:text-primary-400")}
+                </div>
+                ${content}
+            </div>`;
+        }
+
+        function renderSectionHeader(iconName, title, isSidebar = false) {
+            if (isSidebar) {
+                return `
+                <h2 class="text-white font-bold uppercase tracking-wider mb-4 flex items-center gap-2 text-sm">
+                    ${renderIcon(iconName, "w-4 h-4 text-primary-500")} ${title}
+                </h2>`;
+            }
+            // Main content section header
+            const iconHtml = iconName ? `
+                <div class="p-1.5 bg-primary-50 rounded-md text-primary-600">
+                    ${renderIcon(iconName, "w-5 h-5")}
+                </div>` : '';
+            
+            return `
+            <div class="flex items-center gap-3 mb-6 border-b-2 border-slate-100 pb-2">
+                ${iconHtml}
+                <h2 class="text-xl font-serif font-bold text-slate-800 uppercase tracking-wide">${title}</h2>
+            </div>`;
+        }
+
+        function renderTimelineItem(data, isLast) {
+            const line = !isLast 
+                ? `<div class="absolute top-2 left-[11px] sm:left-[14px] w-0.5 h-[calc(100%+8px)] bg-slate-200 group-hover:bg-primary-100 transition-colors print:hidden"></div>` 
+                : '';
+            
+            const highlights = data.highlights.map(h => `<li class="pl-1">${h}</li>`).join('');
+
+            return `
+            <div class="timeline-item relative pl-8 pb-10 sm:pl-10 group">
+                ${line}
+                <div class="absolute top-2 left-1 sm:left-1.5 w-5 h-5 sm:w-6 sm:h-6 rounded-full border-[3px] border-white bg-slate-300 shadow-sm z-10 group-hover:bg-primary-500 group-hover:scale-125 transition-all duration-300 print:border-slate-300 print:scale-100"></div>
+
+                <div class="flex flex-col sm:flex-row sm:justify-between sm:items-start mb-3 transform transition-transform duration-300 group-hover:translate-x-1 print:transform-none">
+                    <div>
+                        <h3 class="text-lg font-serif font-bold text-slate-900 group-hover:text-primary-700 transition-colors">
+                            ${data.company}
+                        </h3>
+                        <div class="text-primary-600 font-semibold mb-1 text-sm sm:text-base">
+                            ${data.roles.join(" / ")}
+                        </div>
+                    </div>
+                    <div class="flex flex-col sm:items-end text-xs sm:text-sm text-slate-500 mt-1 sm:mt-0 font-medium">
+                        <div class="flex items-center gap-1.5 bg-slate-50 px-2 py-0.5 rounded text-slate-600 print:bg-transparent print:p-0">
+                            ${renderIcon('calendar', 'w-3.5 h-3.5')}
+                            <span>${data.period}</span>
+                        </div>
+                        <div class="flex items-center gap-1.5 mt-1 px-2 print:p-0">
+                            ${renderIcon('map-pin', 'w-3.5 h-3.5')}
+                            <span>${data.location}</span>
+                        </div>
+                    </div>
+                </div>
+
+                <ul class="list-disc list-outside ml-4 space-y-2 text-slate-600 text-sm leading-relaxed marker:text-slate-300 group-hover:marker:text-primary-400">
+                    ${highlights}
+                </ul>
+            </div>`;
+        }
+
+        function renderProjectCard(project) {
+            const impactSection = project.impact ? `
+                <div class="mb-5 bg-gradient-to-r from-primary-50/50 to-transparent p-4 rounded-lg border-l-2 border-primary-300 print:bg-slate-50 print:border-slate-200">
+                    <div class="flex items-center gap-2 text-primary-800 text-xs font-bold uppercase tracking-wider mb-2">
+                        ${renderIcon('zap', 'w-3.5 h-3.5 fill-current')} Key Impact
+                    </div>
+                    <ul class="space-y-1.5">
+                        ${project.impact.map(item => `
+                            <li class="text-xs text-slate-700 leading-snug flex items-start gap-2">
+                                <span class="mt-1 w-1 h-1 rounded-full bg-primary-400 shrink-0"></span>
+                                ${item}
+                            </li>
+                        `).join('')}
+                    </ul>
+                </div>` : '';
+
+            const techStack = project.tech.map(t => `
+                <span class="text-xs font-medium text-slate-600 bg-slate-100 px-2.5 py-0.5 rounded-full border border-slate-200 group-hover:border-primary-100 group-hover:bg-primary-50 group-hover:text-primary-700 transition-colors print:border-slate-300">
+                    ${t}
+                </span>`).join('');
+
+            return `
+            <div class="project-card group bg-white rounded-lg border border-slate-200 p-6 transition-all duration-300 hover:shadow-xl hover:-translate-y-1 hover:border-primary-200 relative overflow-hidden print:border-slate-300 print:shadow-none print:transform-none">
+                <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-primary-400 to-primary-600 opacity-0 group-hover:opacity-100 transition-opacity print:hidden"></div>
+
+                <div class="flex justify-between items-start mb-3">
+                    <h3 class="font-serif font-bold text-slate-800 text-lg group-hover:text-primary-700 transition-colors">
+                        ${project.name}
+                    </h3>
+                    <div class="flex items-center gap-1.5 text-xs font-medium text-slate-400 bg-slate-50 px-2 py-1 rounded border border-slate-100 whitespace-nowrap hidden sm:flex print:flex print:bg-transparent print:border-none">
+                        ${renderIcon('calendar', 'w-3 h-3')}
+                        ${project.period}
+                    </div>
+                </div>
+                
+                <p class="text-sm text-slate-600 mb-5 leading-relaxed">
+                    ${project.description}
+                </p>
+
+                ${impactSection}
+
+                <div class="flex flex-wrap gap-2 pt-3 border-t border-slate-100 print:border-slate-200">
+                    <div class="flex items-center gap-1.5 text-xs font-semibold text-slate-400 mr-1 uppercase tracking-wider">
+                        ${renderIcon('layers', 'w-3 h-3')} Tech Stack
+                    </div>
+                    ${techStack}
+                </div>
+            </div>`;
+        }
+
+        // --- MAIN RENDER ---
+
+        function App() {
+            const d = RESUME_DATA;
+            const initials = d.name.split(' ').map(n => n[0]).join('');
+
+            return `
+            <div class="min-h-screen p-0 md:p-8">
+                <!-- Utility Bar -->
+                <div class="max-w-7xl mx-auto mb-4 flex justify-end gap-2 no-print px-4 md:px-0">
+                    <button id="printBtn" onclick="window.print()" class="flex items-center gap-2 bg-slate-800 text-white px-4 py-2 rounded shadow hover:bg-slate-700 hover:scale-105 active:scale-95 transition-all text-sm font-medium cursor-pointer">
+                        ${renderIcon('printer', 'w-4 h-4')} Print / Save PDF
+                    </button>
+                </div>
+
+                <!-- Main Container -->
+                <!-- We used an ID 'resume-container' to target strictly in print CSS -->
+                <main id="resume-container" class="max-w-7xl mx-auto bg-white shadow-2xl rounded-none md:rounded-2xl overflow-hidden flex flex-col md:flex-row">
+                    
+                    <!-- Sidebar -->
+                    <aside class="w-full md:w-[32%] shrink-0 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-slate-300 p-8 flex flex-col gap-8 relative z-10">
+                        <!-- Profile Header -->
+                        <div class="text-center md:text-left print:text-left">
+                            <div class="relative w-32 h-32 mx-auto mb-6 print:hidden group">
+                                <div class="w-full h-full rounded-full bg-slate-800 border-4 border-slate-700 flex items-center justify-center text-white text-3xl font-serif font-bold shadow-xl ring-2 ring-primary-500/30 group-hover:scale-105 transition-transform duration-300">
+                                    ${initials}
+                                </div>
+                            </div>
+                            <h1 class="text-3xl font-serif font-bold text-white mb-2 tracking-tight">${d.name}</h1>
+                            <p class="text-primary-400 font-medium text-lg leading-snug">${d.title}</p>
+                        </div>
+
+                        <div class="w-full h-px bg-slate-700/50 print:hidden"></div>
+
+                        <!-- Contact -->
+                        <div class="space-y-4">
+                            ${renderContactItem('phone', d.contact.phone)}
+                            ${renderContactItem('mail', d.contact.email, `mailto:${d.contact.email}`)}
+                            ${renderContactItem('github', d.contact.github, d.contact.githubUrl)}
+                            ${renderContactItem('globe', d.contact.blog)}
+                        </div>
+
+                        <div class="w-full h-px bg-slate-700/50 print:hidden"></div>
+
+                        <!-- Skills -->
+                        <div>
+                            ${renderSectionHeader('book-open', 'Technical Skills', true)}
+                            <div class="space-y-6">
+                                ${d.skills.map(cat => `
+                                    <div class="group">
+                                        <h3 class="text-primary-300 text-xs font-bold uppercase mb-2 tracking-wider group-hover:text-primary-200 transition-colors">${cat.title}</h3>
+                                        <div class="flex flex-wrap gap-2">
+                                            ${cat.skills.map(s => `
+                                                <span class="text-xs bg-slate-800/80 px-2.5 py-1 rounded-md text-slate-300 border border-slate-700/50 hover:bg-slate-700 hover:text-white hover:border-primary-500/50 transition-all cursor-default print:bg-transparent print:border-slate-500 print:text-inherit">${s}</span>
+                                            `).join('')}
+                                        </div>
+                                    </div>
+                                `).join('')}
+                            </div>
+                        </div>
+
+                        <div class="w-full h-px bg-slate-700/50 print:hidden"></div>
+
+                        <!-- Education -->
+                        <div>
+                            ${renderSectionHeader('graduation-cap', 'Education', true)}
+                            <div class="space-y-5">
+                                ${d.education.map(edu => `
+                                    <div>
+                                        <div class="text-white font-medium text-sm leading-snug">${edu.school}</div>
+                                        <div class="text-slate-400 text-xs mt-1">${edu.degree}</div>
+                                        <div class="text-slate-500 text-xs italic mt-0.5">${edu.period}</div>
+                                    </div>
+                                `).join('')}
+                            </div>
+                        </div>
+
+                        <!-- Languages -->
+                        <div>
+                             ${renderSectionHeader('languages', 'Languages', true)}
+                             <ul class="space-y-2 text-sm text-slate-400">
+                                ${d.languages.map(l => `
+                                    <li class="flex items-center gap-2">
+                                        <span class="w-1.5 h-1.5 rounded-full bg-primary-500"></span>
+                                        ${l}
+                                    </li>
+                                `).join('')}
+                             </ul>
+                        </div>
+
+                        <!-- Honors -->
+                        <div>
+                            ${renderSectionHeader('award', 'Honors', true)}
+                             <ul class="space-y-3 text-sm text-slate-400">
+                                ${d.honors.map(h => `
+                                    <li class="flex gap-2 items-start">
+                                        <span class="text-primary-500 font-bold text-xs mt-0.5">${h.year}</span>
+                                        <span class="leading-snug text-xs">${h.title}</span>
+                                    </li>
+                                `).join('')}
+                             </ul>
+                        </div>
+                    </aside>
+
+                    <!-- Main Content -->
+                    <div class="flex-1 p-8 md:p-12 main-content relative z-10">
+                        
+                        <!-- Summary -->
+                        <section class="mb-10">
+                            ${renderSectionHeader('user', 'Professional Summary')}
+                            <p class="text-slate-600 leading-relaxed text-sm md:text-base text-justify">
+                                ${d.summary}
+                            </p>
+                        </section>
+
+                        <!-- Management -->
+                        <section class="mb-10 bg-slate-50 p-6 rounded-lg border border-slate-100 hover:border-primary-200 hover:shadow-md transition-all duration-300 print:bg-transparent print:border-none print:p-0 print:shadow-none">
+                             ${renderSectionHeader('users', 'Management Experience')}
+                             <div class="space-y-6">
+                                ${d.management.map(m => `
+                                    <div>
+                                        <div class="flex justify-between items-baseline mb-1">
+                                            <h3 class="font-bold text-slate-800">${m.role}</h3>
+                                            <span class="text-sm font-semibold text-primary-600 bg-primary-50 px-2 py-0.5 rounded">${m.period}</span>
+                                        </div>
+                                        <ul class="list-disc list-inside text-sm text-slate-600 space-y-1">
+                                            ${m.description.map(desc => `<li>${desc}</li>`).join('')}
+                                        </ul>
+                                    </div>
+                                `).join('')}
+                             </div>
+                        </section>
+
+                        <!-- Experience -->
+                        <section class="mb-10">
+                            ${renderSectionHeader('briefcase', 'Work Experience')}
+                            <div class="mt-6">
+                                ${d.experience.map((exp, idx) => renderTimelineItem(exp, idx === d.experience.length - 1)).join('')}
+                            </div>
+                        </section>
+
+                        <!-- Projects -->
+                        <section class="mb-10">
+                            ${renderSectionHeader('folder-open', 'Key Projects')}
+                            <div class="grid grid-cols-1 gap-6">
+                                ${d.projects.map(p => renderProjectCard(p)).join('')}
+                            </div>
+                        </section>
+
+                    </div>
+                </main>
+
+                <footer class="max-w-7xl mx-auto mt-8 text-center text-slate-400 text-sm pb-8 print:hidden">
+                    <p>&copy; ${new Date().getFullYear()} Charles He. All rights reserved.</p>
+                </footer>
+            </div>
+            `;
+        }
+
+        // Initialize
+        document.getElementById('app').innerHTML = App();
+        lucide.createIcons();
+    </script>
+</body>
+</html>
