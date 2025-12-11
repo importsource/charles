@@ -183,11 +183,13 @@
         // --- DATA ---
         const RESUME_DATA = {
           name: "Charles He",
+          portrait: "https://importsource.github.io/charles/portrait-charles.jpg",
           title: "Software Architect | Senior Java Engineer | Technical Manager",
           summary: "Highly experienced and passionate backend engineer and system architect, with a strong focus on foundational component development and distributed architecture. Over the years, I have led or contributed to the implementation of core infrastructure at scale, including logging platforms, low-code frameworks, intelligent assistants, and CRM/contract systems. I have also played a key role in building and managing technical teams, defining engineering workflows, performance review systems, and cultivating a culture of learning and excellence within the organization.",
           contact: {
             phone: "(626) ***-****",
             email: "meixixizf24@gmail.com",
+            location: "Los Angeles or Remote",
             github: "github.com/importsource",
             githubUrl: "https://github.com/importsource",
             blog: "ImportSource"
@@ -195,7 +197,7 @@
           skills: [
             {
               title: "Backend & Core",
-              skills: ["Java", "Spring Boot", "Spring Cloud", "Netty", "RPC", "DDD", "JVM Tuning (ZGC)", "Concurrent Programming"],
+              skills: ["Java", "Spring Boot", "Spring Cloud", "Netty", "RPC", "DDD", "JVM Tuning (ZGC)", "Concurrent Programming", "N8N"],
               icon: "code"
             },
             {
@@ -239,9 +241,19 @@
           ],
           experience: [
             {
+              company: "GMIC AI INC.",
+              location: "Los Angeles",
+              period: "July 2025 – Present",
+              roles: ["Full Stack Engineer"],
+              highlights: [
+                "Leveraged N8N to design and automate complex business workflows with high efficiency, building over 15 core business logic workflows to streamline and enhance end-to-end operations.",
+                "Developed a Customer Support Agent to process user feedback and contact requests, significantly improving response speed and operational efficiency."
+              ]
+            },
+            {
               company: "Tencent Ximalaya FM",
               location: "Shanghai/Chengdu",
-              period: "Sep 2017 – Present",
+              period: "Sep 2017 – Sep 2024",
               roles: ["Senior Java Engineer", "Lead Java Engineer", "Principal Technical Expert"],
               highlights: [
                 "Led the design and development of core systems for Ximalaya's Content Management Platform, including Partner, Contract, and Copyright modules.",
@@ -284,9 +296,18 @@
           ],
           projects: [
             {
+              name: "Bizmic – AI-Powered Audio Transcription",
+              company: "GMIC AI INC.",
+              period: "July 2025 – Present",
+              description: "Built an LLM-powered summarization engine that automatically generates concise audio summaries and supports real-time audio transcription. Official website: bizmic.gmic.ai",
+              role: ["Full Stack Engineer"],
+              tech: ["N8N", "LLM", "Audio Processing"],
+              impact: ["Automated complex audio summarization workflows.", "Supported real-time audio transcription for business efficiency."]
+            },
+            {
               name: "Ximalaya AIGC – AI-Powered Book Summary Generator",
               company: "Tencent Ximalaya FM",
-              period: "Sep 2023 – Present",
+              period: "Sep 2023 – Sep 2024",
               description: "Leverages LLM capabilities to automatically generate audiobook-style book summaries, reducing costs for contracted writers.",
               role: ["Lead Engineer"],
               tech: ["IntelliJ IDEA", "LLM", "GPT-4", "Prompt Engineering"],
@@ -295,7 +316,7 @@
             {
               name: "General Log Storage Middleware",
               company: "Tencent Ximalaya FM",
-              period: "Sep 2017 – Present",
+              period: "Sep 2017 – Sep 2024",
               description: "Internal audit log platform for Operations, Sales, IT, and DevOps departments.",
               role: ["Architect", "Developer"],
               tech: ["Java", "MQ", "ElasticSearch", "HBase"],
@@ -304,7 +325,7 @@
             {
               name: "Ximalaya Smart Assistant (DingTalk Bot)",
               company: "Tencent Ximalaya FM",
-              period: "Sep 2017 – Present",
+              period: "Sep 2017 – Sep 2024",
               description: "Intelligent assistant chatbot improving internal communication using an expert knowledge model.",
               role: ["Team Lead", "Architect"],
               tech: ["NLP", "Text Segmentation", "Sentiment Analysis"],
@@ -313,7 +334,7 @@
             {
               name: "Hayai Low-Code Platform",
               company: "Tencent Ximalaya FM",
-              period: "Sep 2017 – Present",
+              period: "Sep 2017 – Sep 2024",
               description: "Platform for quickly building internal applications (within an hour) for HR, Admin, Ops, and Legal teams.",
               role: ["Core Developer", "Team Lead"],
               tech: ["Metadata Engine", "Rendering Layer", "Workflow Engine"],
@@ -322,7 +343,7 @@
             {
               name: "Contract Management System",
               company: "Tencent Ximalaya FM",
-              period: "Sep 2017 – Present",
+              period: "Sep 2017 – Sep 2024",
               description: "Handles dynamic and complex contracts between Ximalaya and partners.",
               role: ["Initiator", "Team Lead"],
               tech: ["Configuration Domain", "Business Domain", "API Design"],
@@ -331,7 +352,7 @@
     {
       name: "CRM System",
       company: "Tencent Ximalaya FM",
-      period: "Sep 2017 – Present",
+      period: "Sep 2017 – Sep 2024",
       description: "Centralizes lifecycle management for clients and signed creators.",
       role: ["Design Lead", "Developer"],
       tech: ["Java", "Microservices"],
@@ -519,6 +540,13 @@
             const d = RESUME_DATA;
             const initials = d.name.split(' ').map(n => n[0]).join('');
 
+            // Logic to choose between image and initials
+            const profileContent = d.portrait 
+                ? `<img src="${d.portrait}" alt="${d.name}" class="w-full h-full rounded-full object-cover object-top border-4 border-slate-700 shadow-xl ring-2 ring-primary-500/30 group-hover:scale-105 transition-transform duration-300" />`
+                : `<div class="w-full h-full rounded-full bg-slate-800 border-4 border-slate-700 flex items-center justify-center text-white text-3xl font-serif font-bold shadow-xl ring-2 ring-primary-500/30 group-hover:scale-105 transition-transform duration-300">
+                    ${initials}
+                   </div>`;
+
             return `
             <div class="min-h-screen p-0 md:p-8">
                 <!-- Utility Bar -->
@@ -537,9 +565,7 @@
                         <!-- Profile Header -->
                         <div class="text-center md:text-left print:text-left">
                             <div class="relative w-32 h-32 mx-auto mb-6 print:hidden group">
-                                <div class="w-full h-full rounded-full bg-slate-800 border-4 border-slate-700 flex items-center justify-center text-white text-3xl font-serif font-bold shadow-xl ring-2 ring-primary-500/30 group-hover:scale-105 transition-transform duration-300">
-                                    ${initials}
-                                </div>
+                                ${profileContent}
                             </div>
                             <h1 class="text-3xl font-serif font-bold text-white mb-2 tracking-tight">${d.name}</h1>
                             <p class="text-primary-400 font-medium text-lg leading-snug">${d.title}</p>
@@ -551,6 +577,7 @@
                         <div class="space-y-4">
                             ${renderContactItem('phone', d.contact.phone)}
                             ${renderContactItem('mail', d.contact.email, `mailto:${d.contact.email}`)}
+                            ${renderContactItem('map-pin', d.contact.location)}
                             ${renderContactItem('github', d.contact.github, d.contact.githubUrl)}
                             ${renderContactItem('globe', d.contact.blog)}
                         </div>
