@@ -41,6 +41,9 @@
             fontFamily: {
               sans: ['Inter', 'sans-serif'],
               serif: ['Merriweather', 'serif'],
+            },
+            screens: {
+                'print': {'raw': 'print'},
             }
           }
         }
@@ -80,8 +83,8 @@
           background: white !important;
           margin: 0 !important;
           padding: 0 !important;
-          /* Ensure text is black by default unless overridden */
           color: black;
+          font-size: 9pt !important; /* Compact font size */
         }
 
         #app {
@@ -94,23 +97,16 @@
             display: none !important;
         }
 
-        /* 
-           CRITICAL PRINT LAYOUT FIX:
-           1. Force CSS Grid to strictly define the 2 columns (Sidebar 30%, Main 70%).
-           2. Use a linear-gradient on the container to simulate the sidebar background 
-              color extending all the way down, even if the content is short.
-        */
         #resume-container {
             display: grid !important;
-            grid-template-columns: 30% 70% !important;
+            grid-template-columns: 28% 72% !important; /* Slightly narrower sidebar for more content space */
             width: 100% !important;
             max-width: none !important;
             box-shadow: none !important;
             border: none !important;
             border-radius: 0 !important;
             margin: 0 !important;
-            /* Matches slate-900 (sidebar) and white (main) */
-            background: linear-gradient(to right, #0f172a 30%, #ffffff 30%) !important; 
+            background: linear-gradient(to right, #0f172a 28%, #ffffff 28%) !important; 
             overflow: visible !important;
             height: auto !important;
         }
@@ -118,61 +114,79 @@
         /* Sidebar Styling for Print */
         aside {
             width: 100% !important;
-            background: transparent !important; /* Let gradient show */
-            padding: 2.5rem !important; /* Increase padding for print readability */
+            background: transparent !important;
+            padding: 1.5rem !important; /* Reduce padding */
+            gap: 1.5rem !important; /* Reduce gap */
             height: auto !important;
-            color: #cbd5e1 !important; /* Slate 300 */
-        }
-        
-        /* Force light text in the dark sidebar column */
-        aside h1, aside h2, aside h3, aside .text-white {
-            color: #ffffff !important;
-            text-shadow: none !important;
-        }
-        aside .text-slate-300, aside .text-slate-400, aside .text-slate-500 {
             color: #cbd5e1 !important;
         }
-        aside .text-primary-400, aside .text-primary-500 {
-            color: #60a5fa !important; /* Primary 400 */
-        }
-        aside .border-slate-700 {
-            border-color: #334155 !important;
-        }
+        
+        aside h1 { font-size: 20pt !important; line-height: 1.2 !important; margin-bottom: 0.25rem !important; }
+        aside h2 { font-size: 11pt !important; margin-bottom: 0.5rem !important; }
+        aside p, aside li, aside span { font-size: 8.5pt !important; }
+        
+        /* Force light text in the dark sidebar column */
+        aside h1, aside h2, aside h3, aside .text-white { color: #ffffff !important; text-shadow: none !important; }
+        aside .text-slate-300, aside .text-slate-400, aside .text-slate-500 { color: #cbd5e1 !important; }
+        aside .text-primary-400, aside .text-primary-500 { color: #60a5fa !important; }
+        aside .border-slate-700 { border-color: #334155 !important; }
 
         /* Main Content Styling for Print */
         .main-content {
             width: 100% !important;
             background: transparent !important;
-            padding: 2.5rem !important;
-            padding-top: 3rem !important;
+            padding: 1.5rem !important; /* Reduce padding */
+            padding-top: 2rem !important;
             overflow: visible !important;
             height: auto !important;
         }
         
         /* Typography adjustments for Print */
         p, li {
-            font-size: 10pt !important;
-            line-height: 1.5 !important;
+            font-size: 9pt !important;
+            line-height: 1.4 !important;
         }
         h2 {
-            font-size: 16pt !important;
-            margin-bottom: 1rem !important;
+            font-size: 13pt !important;
+            margin-bottom: 0.75rem !important;
+            border-bottom-width: 1px !important;
+            padding-bottom: 0.25rem !important;
+        }
+        h3 {
+            font-size: 11pt !important;
         }
 
-        /* Break Management */
-        h2, h3 {
-            break-after: avoid;
-            page-break-after: avoid;
-        }
+        /* Spacing adjustments */
         section {
             break-inside: avoid; 
-            margin-bottom: 2rem !important;
+            margin-bottom: 1.5rem !important;
         }
-        /* Allow lists to break, but keep items intact if possible */
+        .mb-10 { margin-bottom: 1.5rem !important; }
+        .mb-6 { margin-bottom: 0.75rem !important; }
+
+        /* Timeline and Project Cards */
         .timeline-item, .project-card, li {
             break-inside: avoid;
             page-break-inside: avoid;
         }
+        
+        /* Projects 2-Column Grid for Print */
+        .projects-grid {
+            display: grid !important;
+            grid-template-columns: 1fr 1fr !important;
+            gap: 1rem !important;
+        }
+        .project-card {
+            padding: 0.75rem !important;
+            margin-bottom: 0 !important;
+            border: 1px solid #e2e8f0 !important;
+        }
+        .project-card h3 { font-size: 10pt !important; }
+        .project-card p { margin-bottom: 0.5rem !important; }
+        .project-card .text-xs { font-size: 8pt !important; }
+
+        /* Hide elements to save space */
+        .print-hidden { display: none !important; }
       }
     </style>
 </head>
@@ -646,6 +660,14 @@
                                     </li>
                                 `).join('')}
                              </ul>
+                        </div>
+                        
+                        <!-- QR Code -->
+                        <div class="mt-auto pt-4 flex flex-col items-center md:items-start print:pt-4">
+                            <div class="bg-white p-2 rounded-lg shadow-lg">
+                                <img src="https://importsource.github.io/charles/qrcode-about-me.jpg" alt="Resume QR Code" class="w-24 h-24 object-contain print:w-20 print:h-20" />
+                            </div>
+                            <span class="text-[10px] uppercase tracking-widest text-slate-500 mt-2 font-semibold">Scan for Web View</span>
                         </div>
                     </aside>
 
