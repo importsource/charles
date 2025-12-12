@@ -72,6 +72,15 @@
           transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
           transition-duration: 150ms;
       }
+
+      /* Privacy Mode Styles */
+      .privacy-mode .sensitive {
+          filter: blur(12px);
+          opacity: 0.6;
+          user-select: none;
+          pointer-events: none;
+          transition: filter 0.4s ease, opacity 0.4s ease;
+      }
       
       @media print {
         @page {
@@ -187,6 +196,12 @@
 
         /* Hide elements to save space */
         .print-hidden { display: none !important; }
+        
+        /* Disable privacy mode blur on print, or keep it if intended? usually print should be clear unless specified */
+        .privacy-mode .sensitive {
+            filter: none !important;
+            opacity: 1 !important;
+        }
       }
     </style>
 </head>
@@ -432,8 +447,8 @@
 
         function renderContactItem(iconName, text, href) {
             const content = href 
-                ? `<a href="${href}" target="_blank" rel="noopener noreferrer" class="text-slate-300 hover:text-white transition-colors print:text-inherit">${text}</a>`
-                : `<span class="text-slate-300 print:text-inherit">${text}</span>`;
+                ? `<a href="${href}" target="_blank" rel="noopener noreferrer" class="text-slate-300 hover:text-white transition-colors print:text-inherit sensitive">${text}</a>`
+                : `<span class="text-slate-300 print:text-inherit sensitive">${text}</span>`;
             
             return `
             <div class="flex items-center gap-3 text-sm group">
@@ -570,6 +585,9 @@
             <div class="min-h-screen p-0 md:p-8">
                 <!-- Utility Bar -->
                 <div class="max-w-7xl mx-auto mb-4 flex justify-end gap-2 no-print px-4 md:px-0">
+                    <button id="privacyBtn" onclick="togglePrivacy()" class="flex items-center gap-2 bg-slate-800 text-white px-4 py-2 rounded shadow hover:bg-slate-700 hover:scale-105 active:scale-95 transition-all text-sm font-medium cursor-pointer">
+                        ${renderIcon('eye', 'w-4 h-4')} <span>Secret Mode</span>
+                    </button>
                     <button id="printBtn" onclick="window.print()" class="flex items-center gap-2 bg-slate-800 text-white px-4 py-2 rounded shadow hover:bg-slate-700 hover:scale-105 active:scale-95 transition-all text-sm font-medium cursor-pointer">
                         ${renderIcon('printer', 'w-4 h-4')} Print / Save PDF
                     </button>
@@ -583,10 +601,10 @@
                     <aside class="w-full md:w-[32%] shrink-0 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-slate-300 p-8 flex flex-col gap-8 relative z-10">
                         <!-- Profile Header -->
                         <div class="text-center md:text-left print:text-left">
-                            <div class="relative w-32 h-32 mx-auto mb-6 print:hidden group">
+                            <div class="relative w-32 h-32 mx-auto mb-6 print:hidden group sensitive">
                                 ${profileContent}
                             </div>
-                            <h1 class="text-3xl font-serif font-bold text-white mb-2 tracking-tight">${d.name}</h1>
+                            <h1 class="text-3xl font-serif font-bold text-white mb-2 tracking-tight sensitive">${d.name}</h1>
                             <p class="text-primary-400 font-medium text-lg leading-snug">${d.title}</p>
                         </div>
 
@@ -663,7 +681,7 @@
                         </div>
                         
                         <!-- QR Code -->
-                        <div class="mt-auto pt-4 flex flex-col items-center md:items-start print:pt-4">
+                        <div class="mt-auto pt-4 flex flex-col items-center md:items-start print:pt-4 sensitive">
                             <div class="bg-white p-2 rounded-lg shadow-lg">
                                 <img src="https://importsource.github.io/charles/qrcode-about-me.jpg" alt="Resume QR Code" class="w-24 h-24 object-contain print:w-20 print:h-20" />
                             </div>
@@ -729,6 +747,21 @@
         // Initialize
         document.getElementById('app').innerHTML = App();
         lucide.createIcons();
+
+        // Privacy Toggle Logic
+        let isPrivacyMode = false;
+        window.togglePrivacy = function() {
+            isPrivacyMode = !isPrivacyMode;
+            document.body.classList.toggle('privacy-mode');
+            
+            const btn = document.getElementById('privacyBtn');
+            const iconName = isPrivacyMode ? 'eye-off' : 'eye';
+            const text = isPrivacyMode ? 'Show Identity' : 'Secret Mode';
+            
+            // Re-render button content
+            btn.innerHTML = `${renderIcon(iconName, 'w-4 h-4')} <span>${text}</span>`;
+            lucide.createIcons();
+        }
     </script>
 </body>
 </html>
