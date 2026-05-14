@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content="Resume of Charles He - Software Architect" />
     <title>Charles He - Resume</title>
-    
+
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -49,10 +49,10 @@
         }
       }
     </script>
-    
+
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Merriweather:wght@300;400;700;900&display=swap" rel="stylesheet">
-    
+
     <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
 
@@ -65,7 +65,7 @@
         -webkit-print-color-adjust: exact;
         print-color-adjust: exact;
       }
-      
+
       /* Smooth Scrolling & Base Transitions */
       * {
           transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
@@ -81,7 +81,7 @@
           pointer-events: none;
           transition: filter 0.4s ease, opacity 0.4s ease;
       }
-      
+
       @media print {
         @page {
             margin: 0;
@@ -93,7 +93,7 @@
           margin: 0 !important;
           padding: 0 !important;
           color: black;
-          font-size: 9pt !important; /* Compact font size */
+          font-size: 9pt !important;
         }
 
         #app {
@@ -108,49 +108,45 @@
 
         #resume-container {
             display: grid !important;
-            grid-template-columns: 28% 72% !important; /* Slightly narrower sidebar for more content space */
+            grid-template-columns: 28% 72% !important;
             width: 100% !important;
             max-width: none !important;
             box-shadow: none !important;
             border: none !important;
             border-radius: 0 !important;
             margin: 0 !important;
-            background: linear-gradient(to right, #0f172a 28%, #ffffff 28%) !important; 
+            background: linear-gradient(to right, #0f172a 28%, #ffffff 28%) !important;
             overflow: visible !important;
             height: auto !important;
         }
 
-        /* Sidebar Styling for Print */
         aside {
             width: 100% !important;
             background: transparent !important;
-            padding: 1.5rem !important; /* Reduce padding */
-            gap: 1.5rem !important; /* Reduce gap */
+            padding: 1.5rem !important;
+            gap: 1.5rem !important;
             height: auto !important;
             color: #cbd5e1 !important;
         }
-        
+
         aside h1 { font-size: 20pt !important; line-height: 1.2 !important; margin-bottom: 0.25rem !important; }
         aside h2 { font-size: 11pt !important; margin-bottom: 0.5rem !important; }
         aside p, aside li, aside span { font-size: 8.5pt !important; }
-        
-        /* Force light text in the dark sidebar column */
+
         aside h1, aside h2, aside h3, aside .text-white { color: #ffffff !important; text-shadow: none !important; }
         aside .text-slate-300, aside .text-slate-400, aside .text-slate-500 { color: #cbd5e1 !important; }
         aside .text-primary-400, aside .text-primary-500 { color: #60a5fa !important; }
         aside .border-slate-700 { border-color: #334155 !important; }
 
-        /* Main Content Styling for Print */
         .main-content {
             width: 100% !important;
             background: transparent !important;
-            padding: 1.5rem !important; /* Reduce padding */
+            padding: 1.5rem !important;
             padding-top: 2rem !important;
             overflow: visible !important;
             height: auto !important;
         }
-        
-        /* Typography adjustments for Print */
+
         p, li {
             font-size: 9pt !important;
             line-height: 1.4 !important;
@@ -165,21 +161,18 @@
             font-size: 11pt !important;
         }
 
-        /* Spacing adjustments */
         section {
-            break-inside: avoid; 
+            break-inside: avoid;
             margin-bottom: 1.5rem !important;
         }
         .mb-10 { margin-bottom: 1.5rem !important; }
         .mb-6 { margin-bottom: 0.75rem !important; }
 
-        /* Timeline and Project Cards */
         .timeline-item, .project-card, li {
             break-inside: avoid;
             page-break-inside: avoid;
         }
-        
-        /* Projects 2-Column Grid for Print */
+
         .projects-grid {
             display: grid !important;
             grid-template-columns: 1fr 1fr !important;
@@ -194,10 +187,8 @@
         .project-card p { margin-bottom: 0.5rem !important; }
         .project-card .text-xs { font-size: 8pt !important; }
 
-        /* Hide elements to save space */
         .print-hidden { display: none !important; }
-        
-        /* Disable privacy mode blur on print, or keep it if intended? usually print should be clear unless specified */
+
         .privacy-mode .sensitive {
             filter: none !important;
             opacity: 1 !important;
@@ -213,8 +204,14 @@
         const RESUME_DATA = {
           name: "Charles He",
           portrait: "https://importsource.github.io/charles/portrait-charles.jpg",
-          title: "Software Architect | Senior Java Engineer | Technical Manager",
-          summary: "Highly experienced and passionate backend engineer and system architect, with a strong focus on foundational component development, distributed architecture, and AI/LLM innovation. I specialize in designing intelligent systems using RAG, Vector Databases, and AI Agents, effectively bridging traditional backend infrastructure with cutting-edge Generative AI technologies. Over the years, I have led the implementation of core infrastructure at scale, including logging platforms, low-code frameworks, and NLP-powered smart assistants. I have also played a key role in building and managing technical teams, defining engineering workflows, performance review systems, and cultivating a culture of learning and excellence within the organization.",
+          title: "Software Architect | Senior Java Engineer | 14+ Years Experience",
+          summary: "Java Architect and Platform Engineer with 14+ years of experience focused on building enterprise-grade platform infrastructure and reusable engineering components, including distributed caching systems (CacheCloud), configuration center services, centralized logging frameworks, and low-code platform architectures. Strong advocate for SDK-first and platform-driven development, designing internal frameworks that enable large-scale engineering efficiency and cross-team system consistency. Led engineering teams of 5–20 members delivering mission-critical systems and driving large-scale architecture evolution. Currently exploring LLM-based systems and AIGC applications, while building self-initiated engineering projects to deepen system design and platform engineering expertise.",
+
+          targetRoles: [
+            "Software Architect (Java / Microservices)",
+            "Senior Backend Engineer (Java / AIGC Infra)"
+          ],
+
           contact: {
             phone: "(626) ***-****",
             email: "meixixizf24@gmail.com",
@@ -225,45 +222,57 @@
             githubUrl: "https://github.com/importsource",
             blog: "ImportSource"
           },
+
           skills: [
             {
-              title: "AI & LLM",
-              skills: ["RAG (Retrieval-Augmented Generation)", "AI Agents", "ChatGPT/OpenAI API", "Vector Databases (Qdrant, Pinecone)", "Prompt Engineering", "LangChain", "NLP"],
-              icon: "brain"
-            },
-            {
-              title: "Backend & Core",
-              skills: ["Java", "Spring Boot", "Spring Cloud", "Netty", "RPC", "DDD", "JVM Tuning (ZGC)", "Concurrent Programming", "N8N"],
+              title: "Languages",
+              skills: ["Java", "JavaScript", "Rust", "Python"],
               icon: "code"
             },
             {
-              title: "Microservices & Infra",
-              skills: ["Microservices", "Docker", "DevOps", "Zookeeper", "Maven", "Git"],
+              title: "Frameworks",
+              skills: ["Spring Boot", "Spring MVC", "MyBatis", "Domain-Driven Design (DDD)"],
+              icon: "layers"
+            },
+            {
+              title: "Distributed & Middleware",
+              skills: ["Spring Cloud", "RPC", "Netty", "Zookeeper", "Redis"],
               icon: "cloud"
             },
             {
-              title: "Big Data & Distributed",
-              skills: ["HDFS", "MapReduce", "Flink", "ClickHouse", "MongoDB", "ElasticSearch"],
-              icon: "server"
-            },
-            {
               title: "Databases",
-              skills: ["Redis", "HBase", "MySQL", "Relational DB Optimization"],
+              skills: ["MySQL", "ClickHouse", "MongoDB", "HBase", "ElasticSearch", "Flink", "MyCat"],
               icon: "database"
             },
             {
-              title: "Frontend",
-              skills: ["HTML5", "jQuery", "Bootstrap", "AngularJS"],
-              icon: "layout"
+              title: "Platform & Infrastructure",
+              skills: ["Cache Systems (CacheCloud)", "Configuration Center", "Centralized Logging", "Low-Code Platform", "High-Concurrency Design"],
+              icon: "server"
+            },
+            {
+              title: "AI & LLM",
+              skills: ["RAG", "AI Agents", "OpenAI API", "Vector DB (Qdrant/Pinecone)", "Prompt Engineering", "LangChain", "NLP"],
+              icon: "brain"
+            },
+            {
+              title: "Big Data & Streaming",
+              skills: ["HDFS", "MapReduce", "YARN"],
+              icon: "bar-chart-2"
+            },
+            {
+              title: "DevOps & Tooling",
+              skills: ["Maven", "Git", "Jenkins", "Docker", "Nginx"],
+              icon: "wrench"
             }
           ],
+
           management: [
             {
               period: "2019 – 2022",
               role: "Head of Technical Productivity Department, Chengdu Division",
               description: [
                 "Managed a team of 20 engineers (direct reports).",
-                "Led the establishment of Chengdu’s technical culture and engineering systems.",
+                "Led the establishment of Chengdu's technical culture and engineering systems.",
                 "Co-designed and implemented company-wide practices: QA, Project Management, and OKRs."
               ]
             },
@@ -275,6 +284,7 @@
               ]
             }
           ],
+
           experience: [
             {
               company: "GMIC AI INC.",
@@ -282,8 +292,8 @@
               period: "July 2025 – Present",
               roles: ["Full Stack Engineer"],
               highlights: [
-                "Leveraged N8N to design and automate complex business workflows with high efficiency, building over 15 core business logic workflows to streamline and enhance end-to-end operations.",
-                "Developed a Customer Support Agent to process user feedback and contact requests, significantly improving response speed and operational efficiency."
+                "n8n AI Agent Automation: Leveraged n8n as a workflow orchestration engine to automate end-to-end business processes integrated with Notion, Pinecone, and tool-using AI agents (tool calling + memory). Designed 15+ production workflows covering AI-driven support automation, Pinecone RAG pipelines, and data synchronization.",
+                "Bizmic – Audio Platform: Built an LLM-powered audio processing system providing real-time transcription and automatic summarization using OpenAI models. Integrated Quartz scheduling and MySQL for scalable production workflows."
               ]
             },
             {
@@ -292,10 +302,11 @@
               period: "Sep 2017 – Sep 2024",
               roles: ["Senior Java Engineer", "Lead Java Engineer", "Principal Technical Expert"],
               highlights: [
-                "Led the design and development of core systems for Ximalaya's Content Management Platform, including Partner, Contract, and Copyright modules.",
-                "Played a key role in building foundational platforms such as the distributed caching layer, configuration center, message middleware, and alerting center.",
-                "Spearheaded the migration of the company’s service architecture from Dubbo to a Spring Cloud-based microservices architecture.",
-                "Designed and implemented common infrastructure components (e.g., 'blob' for distributed file storage, 'doer' for task scheduling, 'xscript' for backend workflows)."
+                "AIGC Book Summarization (2023–2024): Built an LLM-based system converting book content into lecture-style scripts using multi-stage prompt orchestration and LangChain-managed pipelines.",
+                "Low-Code Platform 'Hayai': Led a 4-person team to build a metadata-driven internal platform supporting 45+ internal apps (HR, Admin, Ops, Legal) with ≈1-hour app generation capability.",
+                "Universal Logging Middleware: Architected a distributed audit logging platform from scratch — log-client SDKs, async RabbitMQ transfer, HBase/ES storage, and a web admin portal.",
+                "Ximalaya Smart Assistant: Designed a DingTalk-integrated Q&A bot using NLP, tokenization, and Qdrant vector search — processed ~40,000 employee queries.",
+                "Contract Lifecycle & CRM Platform: Led a 7-engineer team to deliver a unified contract management and CRM system supporting thousands of production contracts and core settlement workflows."
               ]
             },
             {
@@ -304,115 +315,139 @@
               period: "Jul 2016 – Sep 2017",
               roles: ["Senior Java Engineer"],
               highlights: [
-                "Contributed to infrastructure platforms including alert centers, configuration centers, and distributed cache services.",
-                "Built reusable components for company-wide use, supporting hundreds of internal services."
+                "CacheCloud: Designed and maintained a company-wide Redis cache platform and client SDK, adopted as the standard caching solution across internal services.",
+                "Config Center: Built a distributed configuration management platform using Redis pub/sub for real-time config delivery across 400+ internal applications without service restart."
               ]
             },
             {
-              company: "China Telecom IT R&D Center",
+              company: "China Telecom R&D / Integration Centers",
               location: "Chongqing/Beijing",
-              period: "May 2015 – Jul 2016",
-              roles: ["Senior Java Engineer (On-site Exchange)"],
+              period: "Nov 2010 – Jul 2016",
+              roles: ["Java Software Engineer", "Senior Java Engineer (On-site Exchange)"],
               highlights: [
-                "Developed components for Alogic, China Telecom’s internal lightweight microservices framework.",
-                "Focused on blob storage, database job scheduling, and system integration tools."
-              ]
-            },
-            {
-              company: "China Telecom Chongqing System Integration Center",
-              location: "Chongqing",
-              period: "Nov 2010 – May 2015",
-              roles: ["Java Software Engineer"],
-              highlights: [
-                "Involved in the development of internal logistics, contract management, and portal systems.",
-                "Led frontend/backend development using Spring, Hibernate, JSP, and jQuery.",
-                "Participated in award-winning internal innovation projects."
+                "Contributed to Alogic, China Telecom's internal lightweight microservice framework. Implemented the VFS (Virtual File System) module for resource abstraction and framework-level extensibility.",
+                "Led frontend/backend development for internal logistics, contract management, and portal systems using Spring, Hibernate, JSP, and jQuery. Participated in award-winning internal innovation projects."
               ]
             }
           ],
+
           projects: [
             {
-              name: "Bizmic – AI-Powered Audio Transcription",
+              name: "n8n Workflow Orchestration & AI Agent Automation",
               company: "GMIC AI INC.",
               period: "July 2025 – Present",
-              description: "Built an LLM-powered summarization engine that automatically generates concise audio summaries and supports real-time audio transcription. Official website: bizmic.gmic.ai",
+              description: "Leveraged n8n as a workflow orchestration engine to automate end-to-end business processes integrated with Notion, Pinecone, and AI agents (tool calling + memory). Built a Customer Support Agent to automatically process user feedback and contact requests.",
               role: ["Full Stack Engineer"],
-              tech: ["N8N", "LLM", "RAG", "AI Agents", "ChatGPT", "Vector DB (Qdrant/Pinecone)"],
-              impact: ["Automated complex audio summarization workflows.", "Supported real-time audio transcription for business efficiency.", "Integrated AI Agents and Vector Databases for intelligent context retrieval."]
+              tech: ["Spring Boot", "n8n", "Notion", "WordPress", "Tool Calling", "Pinecone", "RAG"],
+              impact: ["Designed 15+ production workflows for AI-driven support automation.", "Built Pinecone RAG pipelines for vector-based knowledge retrieval.", "Improved response handling efficiency and reduced manual operations."]
             },
             {
-              name: "Ximalaya AIGC – AI-Powered Book Summary Generator",
+              name: "Bizmic – AI-Powered Audio Transcription & Summarization",
+              company: "GMIC AI INC.",
+              period: "July 2025 – Present",
+              description: "Built an LLM-powered audio processing system providing real-time transcription and automatic summarization. Designed a pipeline converting raw audio into structured summaries using OpenAI models for fast knowledge extraction from long-form audio.",
+              role: ["Full Stack Engineer"],
+              tech: ["Spring Boot", "MySQL", "Quartz", "OpenAI API"],
+              impact: ["Enabled scalable audio-to-summary pipelines with scheduled processing.", "Integrated persistent MySQL storage for production workloads.", "Official site: bizmic.gmic.ai"]
+            },
+            {
+              name: "AIGC – AI-Powered Book Summarization System",
               company: "Tencent Ximalaya FM",
-              period: "Sep 2023 – Sep 2024",
-              description: "Leverages LLM capabilities to automatically generate audiobook-style book summaries, reducing costs for contracted writers.",
+              period: "2023 – Sep 2024",
+              description: "Built an LLM-based content generation system converting book content into structured lecture-style scripts using multi-stage prompt orchestration and GPT-based recursive decomposition and refinement.",
               role: ["Lead Engineer"],
-              tech: ["IntelliJ IDEA", "LLM", "GPT-4", "Prompt Engineering"],
-              impact: ["Significantly reduced high costs associated with hiring contracted writers.", "Created structured scripts suitable for audio narration using recursive prompts."]
+              tech: ["Spring Boot", "OpenAI API", "LangChain", "Prompt Engineering"],
+              impact: ["Significantly reduced high costs of contracted writers.", "LangChain-managed prompt chaining for scalable long-form content generation."]
             },
             {
-              name: "General Log Storage Middleware",
+              name: "Low-Code Platform (\"Hayai\")",
               company: "Tencent Ximalaya FM",
               period: "Sep 2017 – Sep 2024",
-              description: "Internal audit log platform for Operations, Sales, IT, and DevOps departments.",
+              description: "Designed and led a 4-person team to build a metadata-driven internal low-code platform enabling rapid application delivery. Implemented a UI engine with reusable form components and an event-driven extension mechanism for flexible workflow integration.",
+              role: ["Core Developer", "Team Lead"],
+              tech: ["Spring Boot", "Quartz", "MySQL", "Elasticsearch", "Metadata Engine"],
+              impact: ["45+ internal apps deployed across HR, Admin, Ops, Legal, and IT.", "Enabled ≈1-hour app generation through metadata-driven UI automation."]
+            },
+            {
+              name: "Universal Logging Middleware",
+              company: "Tencent Ximalaya FM",
+              period: "Sep 2017 – Sep 2024",
+              description: "Architected a distributed audit logging platform from scratch: log-client SDKs, async RabbitMQ transfer, scalable HBase/ES storage, and a web-based administration portal for auditing and search.",
               role: ["Architect", "Developer"],
-              tech: ["Java", "MQ", "ElasticSearch", "HBase"],
-              impact: ["Designed and implemented from scratch.", "Consists of 4 core modules (client, transfer, storage, admin)."]
+              tech: ["Java", "Spring MVC", "RabbitMQ", "HBase", "Elasticsearch", "MySQL"],
+              impact: ["Centralized audit logging across multiple enterprise business systems.", "Standardized logging interfaces enabling unified traceability."]
             },
             {
               name: "Ximalaya Smart Assistant (DingTalk Bot)",
               company: "Tencent Ximalaya FM",
               period: "Sep 2017 – Sep 2024",
-              description: "Intelligent assistant chatbot improving internal communication using an expert knowledge model and NLP (Tokenization, Embeddings).",
+              description: "Designed an enterprise Q&A assistant integrated with DingTalk using NLP-based intent recognition, tokenization, sentiment analysis, and Qdrant vector database for semantic search and knowledge retrieval.",
               role: ["Team Lead", "Architect"],
-              tech: ["NLP", "Tokenization", "Embeddings", "Sentiment Analysis"],
-              impact: ["Used by over 99% of employees.", "Answered over 40,000 questions.", "Optimized internal workflows through categorized insights."]
+              tech: ["Java", "Spring Boot", "NLP", "Qdrant", "DingTalk API"],
+              impact: ["Processed ~40,000 internal employee queries.", "Reduced repetitive manual support through context-aware automated responses."]
             },
             {
-              name: "Hayai Low-Code Platform",
+              name: "Contract Lifecycle, CRM & Content Management",
               company: "Tencent Ximalaya FM",
               period: "Sep 2017 – Sep 2024",
-              description: "Platform for quickly building internal applications (within an hour) for HR, Admin, Ops, and Legal teams.",
-              role: ["Core Developer", "Team Lead"],
-              tech: ["Metadata Engine", "Rendering Layer", "Workflow Engine"],
-              impact: ["45+ internal apps created and deployed.", "Improved business efficiency across multiple departments."]
-            },
-            {
-              name: "Contract Management System",
-              company: "Tencent Ximalaya FM",
-              period: "Sep 2017 – Sep 2024",
-              description: "Handles dynamic and complex contracts between Ximalaya and partners.",
+              description: "Led a 7-engineer team to build a unified enterprise platform for contract lifecycle management, CRM, and content management — featuring a multi-layer DSL and template engine for dynamic contract generation and approval workflows.",
               role: ["Initiator", "Team Lead"],
-              tech: ["Configuration Domain", "Business Domain", "API Design"],
-              impact: ["Manages tens of thousands of copyright contracts.", "Foundational system for creator settlements."]
-    },
-    {
-      name: "CRM System",
-      company: "Tencent Ximalaya FM",
-      period: "Sep 2017 – Sep 2024",
-      description: "Centralizes lifecycle management for clients and signed creators.",
-      role: ["Design Lead", "Developer"],
-      tech: ["Java", "Microservices"],
-      impact: ["Defined common language across content lifecycle.", "Core platform for marketing ROI decisions."]
-    },
-            {
-              name: "Camille Alert Center",
-              company: "ZBJ.com",
-              period: "Jul 2016 – Sep 2017",
-              description: "Alert center consuming Pinpoint topics, validating rules, and dispatching notifications.",
-              role: ["Developer"],
-              tech: ["Java", "Pinpoint", "Custom Rule Engine"],
-              impact: ["Developed alarm core engine with custom strategy/channel support."]
+              tech: ["Java", "Spring Boot", "MySQL", "DSL Engine", "Template Engine"],
+              impact: ["Supports thousands of production contracts.", "Core system for internal settlement, revenue distribution, and IP lifecycle management."]
             },
             {
-              name: "Distributed Cache Platform",
-              company: "ZBJ.com",
+              name: "CacheCloud – Redis Cache Platform",
+              company: "ZBJ.com (Zhubajie)",
               period: "Jul 2016 – Sep 2017",
-              description: "Unified Redis management platform supporting monitoring, migration, and slow log query.",
+              description: "Designed and maintained a company-wide Redis cache platform and client SDK. Built a unified cache client to standardize Redis access and a web-based platform for Redis resource management, monitoring, and diagnostics.",
               role: ["Developer"],
-              tech: ["Redis", "Java"],
-              impact: ["Adopted by ~300 business services."]
+              tech: ["Spring MVC", "Redis", "MySQL"],
+              impact: ["Adopted as the standard caching solution across most internal services.", "Enabled centralized Redis monitoring and operational management."]
+            },
+            {
+              name: "Config Center",
+              company: "ZBJ.com (Zhubajie)",
+              period: "Jul 2016 – Sep 2017",
+              description: "Built a distributed configuration management platform using Redis pub/sub for real-time configuration delivery across services without restart, integrating with 400+ internal applications.",
+              role: ["Developer"],
+              tech: ["Spring Boot", "Redis", "MySQL"],
+              impact: ["Integrated with 400+ internal applications.", "Enabled centralized, dynamic configuration management without service restart."]
             }
           ],
+
+          selfStudyProjects: [
+            {
+              name: "BoolCache",
+              description: "A Redis-inspired in-memory data structure store built from scratch to explore distributed cache internals. Implements core KV operations, TTL/expiry, pub/sub messaging, and persistence mechanisms.",
+              tech: ["Java", "Networking", "Data Structures", "Persistence"],
+              github: "https://github.com/importsource/BoolCache"
+            },
+            {
+              name: "BoolDB",
+              description: "A MySQL-like relational storage engine built from scratch. Explores B+ tree indexing, SQL parsing, query execution, and basic transaction management to understand database internals from first principles.",
+              tech: ["Java", "B+ Tree", "SQL Parsing", "Storage Engine"],
+              github: "https://github.com/importsource/BoolDB"
+            },
+            {
+              name: "BoolGraphDB",
+              description: "A graph database engine implementing the property graph model. Supports node/edge storage, relationship traversal, and graph query algorithms — inspired by Neo4j internals.",
+              tech: ["Java", "Graph Algorithms", "Property Graph"],
+              github: "https://github.com/importsource/BoolGraphDB"
+            },
+            {
+              name: "BoolDock",
+              description: "A lightweight container runtime engine inspired by Docker. Explores Linux namespaces, cgroups, and image layering concepts to understand container technology from first principles.",
+              tech: ["Java", "Linux Namespaces", "cgroups", "Container Runtime"],
+              github: "https://github.com/importsource/BoolDock"
+            },
+            {
+              name: "CloseClaw",
+              description: "A distributed web crawling and data extraction framework supporting configurable pipelines, politeness rules, and pluggable storage backends for large-scale data collection tasks.",
+              tech: ["Java", "Distributed Systems", "Web Crawling", "Pipelines"],
+              github: "https://github.com/importsource/CloseClaw"
+            }
+          ],
+
           education: [
             {
               school: "Beijing University of Posts and Telecommunications",
@@ -427,14 +462,14 @@
               type: "Full-time"
             }
           ],
+
           honors: [
             { title: "First Prize, Shaanxi Province Advertising & Trademark Design Competition", year: "2006" },
             { title: "Gold Award, Innovation Achievement", year: "2013", issuer: "China Telecom Chongqing" },
             { title: "Bronze Award, Innovation Achievement", year: "2014", issuer: "China Telecom Chongqing" },
-            { title: "Outstanding Innovation Performer", year: "2014", issuer: "China Telecom Chongqing" },
-            { title: "Selected for Open Source Software Talent Development Program", year: "2015", issuer: "China Telecom Group" },
             { title: "Translated \"NoSQL Distilled\" by Martin Fowler into Chinese", year: "2016" }
           ],
+
           languages: [
             "Mandarin (First Language)",
             "English (Working Proficiency)"
@@ -448,10 +483,10 @@
         }
 
         function renderContactItem(iconName, text, href) {
-            const content = href 
+            const content = href
                 ? `<a href="${href}" target="_blank" rel="noopener noreferrer" class="text-slate-300 hover:text-white transition-colors print:text-inherit sensitive">${text}</a>`
                 : `<span class="text-slate-300 print:text-inherit sensitive">${text}</span>`;
-            
+
             return `
             <div class="flex items-center gap-3 text-sm group">
                 <div class="p-1.5 rounded bg-slate-800 group-hover:bg-primary-900/50 transition-colors border border-slate-700/50 print:bg-transparent print:border-none print:p-0">
@@ -468,12 +503,11 @@
                     ${renderIcon(iconName, "w-4 h-4 text-primary-500")} ${title}
                 </h2>`;
             }
-            // Main content section header
             const iconHtml = iconName ? `
                 <div class="p-1.5 bg-primary-50 rounded-md text-primary-600">
                     ${renderIcon(iconName, "w-5 h-5")}
                 </div>` : '';
-            
+
             return `
             <div class="flex items-center gap-3 mb-6 border-b-2 border-slate-100 pb-2">
                 ${iconHtml}
@@ -482,10 +516,10 @@
         }
 
         function renderTimelineItem(data, isLast) {
-            const line = !isLast 
-                ? `<div class="absolute top-2 left-[11px] sm:left-[14px] w-0.5 h-[calc(100%+8px)] bg-slate-200 group-hover:bg-primary-100 transition-colors print:hidden"></div>` 
+            const line = !isLast
+                ? `<div class="absolute top-2 left-[11px] sm:left-[14px] w-0.5 h-[calc(100%+8px)] bg-slate-200 group-hover:bg-primary-100 transition-colors print:hidden"></div>`
                 : '';
-            
+
             const highlights = data.highlights.map(h => `<li class="pl-1">${h}</li>`).join('');
 
             return `
@@ -554,7 +588,7 @@
                         ${project.period}
                     </div>
                 </div>
-                
+
                 <p class="text-sm text-slate-600 mb-5 leading-relaxed">
                     ${project.description}
                 </p>
@@ -570,14 +604,51 @@
             </div>`;
         }
 
+        function renderSelfStudyCard(project) {
+            const techStack = project.tech.map(t => `
+                <span class="text-xs font-medium text-emerald-700 bg-emerald-50 px-2.5 py-0.5 rounded-full border border-emerald-200 print:border-slate-300 print:text-slate-600 print:bg-transparent">
+                    ${t}
+                </span>`).join('');
+
+            return `
+            <div class="project-card group bg-white rounded-lg border border-emerald-100 p-5 transition-all duration-300 hover:shadow-xl hover:-translate-y-1 hover:border-emerald-300 relative overflow-hidden print:border-slate-300 print:shadow-none print:transform-none">
+                <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-emerald-400 to-emerald-600 opacity-0 group-hover:opacity-100 transition-opacity print:hidden"></div>
+
+                <div class="flex justify-between items-start mb-3">
+                    <div class="flex items-center gap-2 flex-wrap">
+                        <h3 class="font-serif font-bold text-slate-800 text-base group-hover:text-emerald-700 transition-colors">
+                            ${project.name}
+                        </h3>
+                        <span class="text-[10px] font-bold uppercase tracking-wider text-emerald-600 bg-emerald-50 border border-emerald-200 px-2 py-0.5 rounded-full print:hidden">
+                            Self-Study
+                        </span>
+                    </div>
+                    <a href="${project.github}" target="_blank" rel="noopener noreferrer"
+                       class="flex items-center gap-1.5 text-xs font-medium text-slate-500 hover:text-emerald-700 bg-slate-50 hover:bg-emerald-50 px-2.5 py-1 rounded-lg border border-slate-200 hover:border-emerald-300 transition-all whitespace-nowrap shrink-0 ml-2 print:hidden">
+                        ${renderIcon('github', 'w-3.5 h-3.5')} GitHub
+                    </a>
+                </div>
+
+                <p class="text-sm text-slate-600 mb-4 leading-relaxed">
+                    ${project.description}
+                </p>
+
+                <div class="flex flex-wrap gap-2 pt-3 border-t border-slate-100 print:border-slate-200">
+                    <div class="flex items-center gap-1.5 text-xs font-semibold text-slate-400 mr-1 uppercase tracking-wider">
+                        ${renderIcon('layers', 'w-3 h-3')} Stack
+                    </div>
+                    ${techStack}
+                </div>
+            </div>`;
+        }
+
         // --- MAIN RENDER ---
 
         function App() {
             const d = RESUME_DATA;
             const initials = d.name.split(' ').map(n => n[0]).join('');
 
-            // Logic to choose between image and initials
-            const profileContent = d.portrait 
+            const profileContent = d.portrait
                 ? `<img src="${d.portrait}" alt="${d.name}" class="w-full h-full rounded-full object-cover object-top border-4 border-slate-700 shadow-xl ring-2 ring-primary-500/30 group-hover:scale-105 transition-transform duration-300" />`
                 : `<div class="w-full h-full rounded-full bg-slate-800 border-4 border-slate-700 flex items-center justify-center text-white text-3xl font-serif font-bold shadow-xl ring-2 ring-primary-500/30 group-hover:scale-105 transition-transform duration-300">
                     ${initials}
@@ -596,9 +667,8 @@
                 </div>
 
                 <!-- Main Container -->
-                <!-- We used an ID 'resume-container' to target strictly in print CSS -->
                 <main id="resume-container" class="max-w-7xl mx-auto bg-white shadow-2xl rounded-none md:rounded-2xl overflow-hidden flex flex-col md:flex-row">
-                    
+
                     <!-- Sidebar -->
                     <aside class="w-full md:w-[32%] shrink-0 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-slate-300 p-8 flex flex-col gap-8 relative z-10">
                         <!-- Profile Header -->
@@ -607,7 +677,7 @@
                                 ${profileContent}
                             </div>
                             <h1 class="text-3xl font-serif font-bold text-white mb-2 tracking-tight sensitive">${d.name}</h1>
-                            <p class="text-primary-400 font-medium text-lg leading-snug">${d.title}</p>
+                            <p class="text-primary-400 font-medium text-sm leading-snug">${d.title}</p>
                         </div>
 
                         <div class="w-full h-px bg-slate-700/50 print:hidden"></div>
@@ -624,10 +694,25 @@
 
                         <div class="w-full h-px bg-slate-700/50 print:hidden"></div>
 
+                        <!-- Target Roles -->
+                        <div>
+                            ${renderSectionHeader('target', 'Target Roles', true)}
+                            <ul class="space-y-2.5">
+                                ${d.targetRoles.map(role => `
+                                    <li class="flex items-start gap-2 text-sm text-slate-300">
+                                        <span class="mt-1.5 w-1.5 h-1.5 rounded-full bg-primary-500 shrink-0"></span>
+                                        ${role}
+                                    </li>
+                                `).join('')}
+                            </ul>
+                        </div>
+
+                        <div class="w-full h-px bg-slate-700/50 print:hidden"></div>
+
                         <!-- Skills -->
                         <div>
                             ${renderSectionHeader('book-open', 'Technical Skills', true)}
-                            <div class="space-y-6">
+                            <div class="space-y-5">
                                 ${d.skills.map(cat => `
                                     <div class="group">
                                         <h3 class="text-primary-300 text-xs font-bold uppercase mb-2 tracking-wider group-hover:text-primary-200 transition-colors">${cat.title}</h3>
@@ -682,7 +767,7 @@
                                 `).join('')}
                              </ul>
                         </div>
-                        
+
                         <!-- QR Code -->
                         <div class="mt-auto pt-4 flex flex-col items-center md:items-start print:pt-4 sensitive">
                             <div class="bg-white p-2 rounded-lg shadow-lg">
@@ -694,7 +779,7 @@
 
                     <!-- Main Content -->
                     <div class="flex-1 p-8 md:p-12 main-content relative z-10">
-                        
+
                         <!-- Summary -->
                         <section class="mb-10">
                             ${renderSectionHeader('user', 'Professional Summary')}
@@ -729,11 +814,20 @@
                             </div>
                         </section>
 
-                        <!-- Projects -->
+                        <!-- Key Projects -->
                         <section class="mb-10">
                             ${renderSectionHeader('folder-open', 'Key Projects')}
                             <div class="grid grid-cols-1 gap-6">
                                 ${d.projects.map(p => renderProjectCard(p)).join('')}
+                            </div>
+                        </section>
+
+                        <!-- Self-Study Projects -->
+                        <section class="mb-10">
+                            ${renderSectionHeader('lightbulb', 'Self-Study Projects')}
+                            <p class="text-sm text-slate-500 -mt-3 mb-6 italic">Personal engineering explorations — built from scratch to deepen system-level and infrastructure understanding.</p>
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                                ${d.selfStudyProjects.map(p => renderSelfStudyCard(p)).join('')}
                             </div>
                         </section>
 
@@ -756,12 +850,11 @@
         window.togglePrivacy = function() {
             isPrivacyMode = !isPrivacyMode;
             document.body.classList.toggle('privacy-mode');
-            
+
             const btn = document.getElementById('privacyBtn');
             const iconName = isPrivacyMode ? 'eye-off' : 'eye';
             const text = isPrivacyMode ? 'Show Identity' : 'Secret Mode';
-            
-            // Re-render button content
+
             btn.innerHTML = `${renderIcon(iconName, 'w-4 h-4')} <span>${text}</span>`;
             lucide.createIcons();
         }
